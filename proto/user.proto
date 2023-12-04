@@ -1,0 +1,103 @@
+syntax = "proto3";
+package user;
+
+message EmptyRequest {}
+message EmptyResponse {}
+
+message User {
+    int32 id = 1;
+    string username = 2;
+    string email = 3;
+    string password = 4;
+    optional int32 store_id = 5;
+    optional int32 branch_id = 6;
+    string login_session = 7;
+}
+
+message CreateUserRequest{
+    string username = 1;
+    string email = 2;
+    string password = 3;
+    optional int32 store_id = 4;
+    optional int32 branch_id = 5;
+    string login_session = 6;
+}
+
+message CreateUserResponse{
+    int32 id_user = 1;
+}
+
+message UserByCredentialsRequest {
+    string username_or_email = 1;
+    string user_password = 2;
+    //optional permissions: Option<Vec<String>>
+}
+
+message UserByCredentialsResponse{
+    User user = 1;
+}
+
+message UserByIdRequest {
+    int32 id_user = 1;
+}
+
+message UserByIdResponse {
+    User user = 1;
+}
+
+message UpdateUserLoginSessionRequest {
+    string username_or_email = 1;
+}
+
+message Role {
+    int32 id = 1;
+    string name = 2;
+    string description = 3;
+    string created_at = 4;
+    string updated_at = 5;
+}
+
+message RoleResponse {
+    repeated Role roles = 1;
+}
+
+message CreateRoleRequest{
+    string name = 2;
+    optional string description = 3;
+}
+
+message CreateRoleResponse {
+    int32 id = 1;
+}
+
+message RoleByIdRequest {
+    int32 id = 1;
+}
+
+message RoleByIdResponse {
+    Role role = 1;
+}
+
+message UpdateRoleRequest {
+    int32 id = 1;
+    optional string name = 2;
+    optional string description = 3;
+}
+
+message UpdateRoleResponse {
+    bool status = 1;
+}
+
+message DeleteRoleRequest {
+    int32 id = 1;
+}
+
+message DeleteRoleResponse {
+    bool status = 1;
+}
+
+
+service UserService {
+  rpc GetUserById (UserByIdRequest) returns (UserByIdResponse);
+  rpc UpdateUserLoginSession(UpdateUserLoginSessionRequest) returns (EmptyResponse);
+}

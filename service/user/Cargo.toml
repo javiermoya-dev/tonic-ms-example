@@ -1,0 +1,34 @@
+[package]
+name = "user"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+schema = { path = "../../library/schema"}
+configuration = { path = "../../library/configuration" }
+db = { path = "../../library/db" }
+error = { path = "../../library/error" }
+status = { path = "../../library/status" }
+
+diesel = { version = "2.1.3", features = ["mysql", "r2d2", "uuid", "chrono", "numeric"] }
+uuid = { version = "1.5.0", features = ["serde", "v4"] }
+serde = { version = "1.0.188", features = ["derive"] }
+serde_json = "1.0.107"
+r2d2 = "0.8"
+chrono = { version = "0.4.31", features = ["serde"] }
+
+prost = "0.12.1"
+prost-types = "0.12.1"
+tokio = { version = "1.33.0", features = ["macros", "rt-multi-thread"] }
+tonic = "0.10.2"
+tonic-health = "0.10.2"
+tonic-web = "0.10.2"
+password-hash = "0.5.0"
+argon2 = "0.5.0"
+rand = "0.8.5"
+
+[build-dependencies]
+protoc-bin-vendored = "3.0.0"
+tonic-build = "0.10.2"

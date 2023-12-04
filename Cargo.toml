@@ -1,0 +1,15 @@
+[workspace]
+
+members = [
+    #library
+    "library/amqp",
+    "library/configuration",
+    "library/error",
+    "library/status",
+    "library/db",
+    "library/schema",
+    "library/helper",
+    # service
+    "service/user",
+    "service/items",
+]
