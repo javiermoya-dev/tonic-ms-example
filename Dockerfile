@@ -20,4 +20,4 @@ COPY --from=builder /usr/src/app/target/release/movies-back /
 EXPOSE 50051
 
 # run it
-#CMD ["/movies-back"]
+CMD ["/movies-back"]
